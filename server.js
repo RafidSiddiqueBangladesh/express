@@ -6,6 +6,7 @@ const mongoose=require("mongoose");
 
 
 const projectRoutes=require("./routes/projectRoutes");
+const userRoutes=require('./routes/userRoutes');
 const app=express();
 const port=process.env.PORT||5000;
 
@@ -19,6 +20,7 @@ app.use((req,res,next)=>{
 
 //routes
 app.use("/api/projects",projectRoutes);
+app.use("/api/user",userRoutes);
 //connect to mongodb
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
     app.listen(port,()=>{
