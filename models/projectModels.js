@@ -9,6 +9,9 @@ const projectSchema = new Schema(
     duration: { type: Number, required: true },
     manager: { type: String, required: true },
     dev: { type: Number, required: true },
+    user_id:{
+      type:String,required:true
+    },
   },
   {
     timestamps: true,
