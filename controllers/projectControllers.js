@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 
 //get all projects
 const getAll=async(req,res)=>{
-    const projects=await Project.find({}).sort({createdAt:-1});
+    const user_id=req.user._id;
+    const projects=await Project.find({user_id}).sort({createdAt:-1});
     res.status(200).json(projects);
 }
 //get a single project 
@@ -53,8 +54,9 @@ const postProjects=async(req,res)=>{
 
 
      try{
+        const user_id=req.user._id;
       const project= await Project.create({
-            ...req.body,
+            ...req.body,user_id
         })
         res.status(200).json(project);
      }catch(err){
